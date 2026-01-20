@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthcare Consent DApp</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  
+</head>
+
+<body>
+  <div class="container">
+    <h1>Healthcare Consent System</h1>
+    <button id="connectWallet">Connect Wallet</button>
+    <p id="walletAddress">Not connected</p>
+
+    <h2>Patient Section</h2>
+    <input type="text" id="patientName" placeholder="Patient Name" />
+    <input type="text" id="patientHash" placeholder="Data Hash" />
+    <button onclick="registerPatient()">Register Patient</button>
+
+    <h2>Doctor Section</h2>
+    <input type="text" id="doctorName" placeholder="Doctor Name" />
+    <input type="text" id="doctorSpec" placeholder="Specialization" />
+    <button onclick="registerDoctor()">Register Doctor</button>
+
+    <h2>Access Management</h2>
+    <input type="text" id="patientAddr" placeholder="Patient Address" />
+    <button onclick="requestAccess()">Request Access</button>
+
+    <input type="text" id="requestId" placeholder="Request ID" />
+    <input type="number" id="duration" placeholder="Duration (seconds)" />
+    <button onclick="approveAccess()">Approve Access</button>
+
+    <input type="text" id="revokeDoctor" placeholder="Doctor Address" />
+    <button onclick="revokeAccess()">Revoke Access</button>
+
+    <p id="status"></p>
+  </div>
+  <script src="web3.js" defer></script>
+</body>
+</html>
