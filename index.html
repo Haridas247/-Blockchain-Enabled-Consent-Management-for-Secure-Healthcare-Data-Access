@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Healthcare Consent DApp</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
-  
+<meta charset="UTF-8">
+<title>Healthcare DApp</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Healthcare Consent System</h1>
-    <button id="connectWallet">Connect Wallet</button>
-    <p id="walletAddress">Not connected</p>
+<div class="container">
+  <h1>  Healthcare DApp</h1>
 
-    <h2>Patient Section</h2>
-    <input type="text" id="patientName" placeholder="Patient Name" />
-    <input type="text" id="patientHash" placeholder="Data Hash" />
-    <button onclick="registerPatient()">Register Patient</button>
+  <button id="connectWalletBtn">Connect Wallet</button>
+  <p id="accountDisplay"></p>
 
-    <h2>Doctor Section</h2>
-    <input type="text" id="doctorName" placeholder="Doctor Name" />
-    <input type="text" id="doctorSpec" placeholder="Specialization" />
-    <button onclick="registerDoctor()">Register Doctor</button>
+  <div id="roleInfo"></div>
 
-    <h2>Access Management</h2>
-    <input type="text" id="patientAddr" placeholder="Patient Address" />
-    <button onclick="requestAccess()">Request Access</button>
+  <div id="adminActions" class="dashboard">
+    <h2>Admin Functions</h2>
+    <input id="patientAddr" placeholder="Patient Address">
+    <input id="patientName" placeholder="Patient Name">
+    <input id="patientHash" placeholder="Data Hash">
+    <button id="registerPatientBtn">Register Patient</button>
 
-    <input type="text" id="requestId" placeholder="Request ID" />
-    <input type="number" id="duration" placeholder="Duration (seconds)" />
-    <button onclick="approveAccess()">Approve Access</button>
+    <input id="doctorAddr" placeholder="Doctor Address">
+    <input id="doctorName" placeholder="Doctor Name">
+    <input id="doctorSpec" placeholder="Specialization">
+    <button id="registerDoctorBtn">Register Doctor</button>
 
-    <input type="text" id="revokeDoctor" placeholder="Doctor Address" />
-    <button onclick="revokeAccess()">Revoke Access</button>
-
-    <p id="status"></p>
+    <input id="verifyDoctorAddr" placeholder="Doctor Address">
+    <button id="verifyDoctorBtn">Verify Doctor</button>
   </div>
-  <script src="web3.js" defer></script>
+
+  <div id="doctorActions" class="dashboard">
+    <h2>Doctor Functions</h2>
+    <input id="requestPatientAddr" placeholder="Patient Address">
+    <button id="requestAccessBtn">Request Access</button>
+
+    <input id="viewPatientAddr" placeholder="Patient Address">
+    <button id="viewPatientDataBtn">View Patient Data</button>
+    <p id="patientDataDisplay"></p>
+  </div>
+
+  <div id="patientActions" class="dashboard">
+    <h2>Patient Functions</h2>
+    <div id="requestList"></div>
+
+    <input id="approveRequestId" placeholder="Request ID">
+    <input id="approveDuration" placeholder="Duration seconds">
+    <button id="approveAccessBtn">Approve Access</button>
+
+    <input id="revokeDoctorAddr" placeholder="Doctor Address">
+    <button id="revokeAccessBtn">Revoke Access</button>
+
+    <input id="updateHash" placeholder="New Data Hash">
+    <button id="updateDataBtn">Update Medical Data</button>
+  </div>
+
+  <div id="status"></div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
